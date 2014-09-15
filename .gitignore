@@ -1,0 +1,6 @@
+*.php~
+*~
+*.swp
+*.swo
+*.orig
+vendor
