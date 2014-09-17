@@ -48,6 +48,10 @@ class Finder {
                                                                       ); 
         }
 
+        if (empty($availableItems)) {
+            return "Order Takeout";
+        }
+
         $dinner = array();
 
         //Iterate through recipes to find the best matches
