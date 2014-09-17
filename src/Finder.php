@@ -37,9 +37,11 @@ class Finder {
             $days     = $interval->format('%R%a'); 
                 
             if ($days < 0 ) {
+                // If expierd throe it away
                 continue;
             }
 
+            // Create an array with keys of items to be compairable easier
             $availableItems[trim(strtolower($fridgeItem[0]))] = array('amount' => $fridgeItem[1],
                                                                       'unit'   => $fridgeItem[2],
                                                                       'days'   => $days
@@ -48,6 +50,7 @@ class Finder {
 
         $dinner = array();
 
+        //Iterate through recipes to find the best matches
         foreach ($this->recipes as $recipes) {
             $days = 0;
 
@@ -62,7 +65,7 @@ class Finder {
                     continue 2;
                 } 
                 
-                // The recipe with less days should be the first suggestion
+                // The recipe with total less expiry days should be the first suggestion
                 $days += $availableItems[$item]['days'];
             }
 
