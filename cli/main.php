@@ -16,22 +16,19 @@ _END_;
     exit;
 }
 
-if (!isset($options['f'])) {
-    exit("Please provide csv file of fridge items \n");
+if (!isset($options['f']) || !file_exists($options['f']) || filesize($options['f']) == 0)  {
+    exit("Please provide a valid csv file of fridge items \n");
 }
 
-if (!isset($options['j'])) {
-    exit("Please provide the json file of the recipes \n");
+if (!isset($options['j']) || !file_exists($options['j']) || !$json = file_get_contents($options['j'])) {
+    exit("Please provide a valid json file of the recipes \n");
 }
 
-if (!$json = file_get_contents($options['j'])){
-    exit("There is some problem with Json file");
-}
-
-$recipes     = json_decode($json, true);
 $fridgeItems = new CsvFileIterator($options['f']);
+$recipes     = json_decode($json, true);
 
 $recipeFinder = new Finder($recipes, $fridgeItems);
+
 $dinner = $recipeFinder->findRecipe();
 
 echo <<<_END_
