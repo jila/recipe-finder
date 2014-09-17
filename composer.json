@@ -1,5 +1,5 @@
 {
-    "name": "jila/recipe-finder",
+    "name": "Jila/recipe-finder",
     "description": "Recipe finder base on given fridge items and available recipes",
     "license": "GPLv3",
     "authors": [
