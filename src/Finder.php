@@ -48,7 +48,7 @@ class Finder {
                                                                       ); 
         }
 
-        if (empty($availableItems)) {
+        if (empty($availableItems) || empty($this->recipes)) {
             return "Order Takeout";
         }
 
